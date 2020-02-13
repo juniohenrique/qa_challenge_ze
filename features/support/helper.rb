@@ -1,4 +1,5 @@
-# encoding: utf-8
+# frozen_string_literal: true
+
 # !/usr/bin/env ruby
 require 'fileutils'
 # metodo para tira screenshot e imbutir no relatorio html
