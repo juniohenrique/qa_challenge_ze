@@ -12,13 +12,22 @@ class HomePage < SitePrism::Page
     element :txt_complemento, '#address-details-input-complement'
     element :check_sem_complemento, '#address-details-checkbox-without-complement'
     element :btn_continuar, '#address-details-button-continue'
+    element :btn_welcome_entrar, '#welcome-button-sign-in'
     element :txt_email, '#login-mail-input-email'
     element :txt_senha, '#login-mail-input-password'
+    element :btn_entrar, '#login-mail-button-sign-in'
 
 
-    def login_email(email, senha)
-        txt_email.set 'juunio.henriquee@gmail.com'
+    def login_email
+        wait_until_btn_welcome_entrar_visible
+        btn_welcome_entrar.click
+        wait_until_btn_email_login_visible
+        btn_email_login.click
+        txt_email.set 'junio.henrique@live.com'
         txt_senha.set 'qachallenge13'
+        wait_until_btn_entrar_visible
+        btn_entrar.click
+        sleep 20
     end
     
     def digitar_endereco
@@ -41,6 +50,12 @@ class HomePage < SitePrism::Page
 
     def selecionar_primeiro_endereco
         find('div[itemid="google-address"]', match: :first).click
+    end
+
+    def escolher_endereco_trabalho
+        find('#address-card-Rua\\ Jaceru').click
+        wait_until_btn_continuar_visible
+        btn_continuar.click
     end
 
 

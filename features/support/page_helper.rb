@@ -7,4 +7,8 @@ module Pages
     def home
         @home ||= HomePage.new
     end
+
+    def products
+        @products ||= ProductsPage.new
+    end
 end

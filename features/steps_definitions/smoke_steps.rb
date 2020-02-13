@@ -18,7 +18,8 @@ end
 
 Quando("termino de escolher meu produto") do
     home.ver_produtos_click
-    sleep 10
+    products.selecionar_primeiro_produto
+    products.adicionar_produto
 end
 
 Quando("escolho meu endereco") do
@@ -26,4 +27,29 @@ Quando("escolho meu endereco") do
      home.digitar_endereco
      home.selecionar_primeiro_endereco
      home.preencher_complemento
+end
+
+Entao("posso acessar meu cadastro") do
+    expect(page).to have_text 'ENTRAR PARA CONTINUAR'
+end
+
+Quando("acesso minha conta") do
+    home.login_email
+end
+
+Quando("peco para entregar no trabalho o produto") do
+    home.btn_inserir_endereco.click
+    home.escolher_endereco_trabalho
+    home.ver_produtos_click
+    products.selecionar_primeiro_produto
+    products.adicionar_produto
+    sleep 10
+end
+
+Entao("posso acessar meu cadastro") do
+    
+end
+
+Entao("escolher a forma de pagamento") do
+    expect(page).to have_text 'SELECIONAR FORMA DE PAGAMENTO'
 end
